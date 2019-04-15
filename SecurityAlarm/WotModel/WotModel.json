@@ -1,0 +1,125 @@
+{
+    "id": "http://172.20.10.8:3000/pi",
+    "name": "Ex 3 Pi",
+    "description": "RapberryPi that handles movementdetection and homecoming events",
+    "tags": [
+      "raspberry",
+      "pi",
+      "1dv527"
+    ],
+    "customFields": {
+      "hostname": "http://172.20.10.8:3000",
+      "port": 3000
+    },
+      "properties": {
+        "link": "/properties",
+        "title": "List of Properties",
+        "resources": {
+          "pir": {
+            "name": "pir",
+            "description": "Movement detector",
+            "values": {
+                "Movement": {
+                    "name": "movement detected",
+                    "description": "movement is detected",
+                    "unit": "boolean",
+                    "customFields": {
+                        "Gpio": 17
+                    }
+                },
+                "Status": {
+                  "name": "PirStatus",
+                  "description": "Status Changed",
+                  "StatusUnit": "boolean",
+                  "StatusChangerUnit": "String",
+                  "customFields": {
+                      "Gpio": 17
+                  }
+                }
+            },
+            "tags": [
+              "sensor",
+              "private",
+              "indoors"
+            ],
+            "data": []
+          },
+          "led": {
+            "name": "red",
+            "description": "red led light",
+            "values": {
+              "led": {
+                "name": "led on/pff",
+                "description": "If led is turned on or nor",
+                "unit":"boolean",
+                "customFields": {
+                    "Gpio": 4
+                }
+              }
+            },
+            "tags": [
+              "sensor",
+              "private"
+            ],
+            "data": []
+          }
+      } 
+    },
+      "actions": {
+        "link": "/actions",
+        "title": "Actions of this Security Alarm",
+        "resources": {
+          "AlarmState": {
+            "name": "AlarmState",
+            "description": "turn Alarm on/off,  requires authentication",
+            "requiresAuthentication": "true",
+            "values": {
+                    "state": {
+                    "type": "boolean",
+                    "required": "true"
+                    
+                  }
+            }
+          },
+          "Authenticate": {
+            "name": "Authenticate",
+            "description": "Authenticate to acces Pi3 Security Alarm",
+            "requiresAuthentication": "false",
+            "values": {
+                    "username": {
+                    "type": "string",
+                    "required": "true"
+                  },
+                  "password" : {
+                    "type": "string",
+                    "required": "true"
+                  }
+            }
+          },
+          "User": {
+            "name": "User",
+            "description": "Add User to Security Alarm, requires authentication",
+            "requiresAuthentication": "true",
+            "values": {
+                    "username": {
+                    "type": "string",
+                    "required": "true"
+                  },
+                  "password" : {
+                    "type": "string",
+                    "required": "true"
+                  }
+            }
+          }
+        }
+      },
+      "type": {
+        "link": "http://localhost:3000/pi",
+        "title": "examination 3"
+      },
+      "ui": {
+        "link": "http://localhost:4000",
+        "title": "User Interface"
+      }
+    }
+  
